@@ -1,10 +1,12 @@
 module.exports = {
-    event: 'message',
-    run: async (client, message) => {
+    name: 'supportreply',
+    event: 'messageCreate',
+    execute: async (client, message) => {
  
 
         // Check if user is a moderator or not.
-        if (!message.member.roles.has('252845216359383042')) return;
+        if (!message.guild) return;
+        if (!message.member.roles.cache.has('252845216359383042')) return;
 
         if(message.content.startsWith("..modreply")) {
 

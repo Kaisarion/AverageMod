@@ -2,6 +2,7 @@ const chalk = require('chalk');
 
 module.exports = {
     name: 'ready',
+    event: 'ready',
     once: true,
     execute: async(client) => {
         console.log(

@@ -1,7 +1,9 @@
 module.exports = {
-   event: 'message',
-   run: async (client, message) => {
+   name: 'modmail',
+   event: 'messageCreate',
+   execute: async (client, message) => {
       // AJ Modmail Event
+      if (!message.guild) return;
         if (message.channel.id === '902384176295182336') {
             // Ensure bot messages are ignored.
             if (message.author.bot) return;
