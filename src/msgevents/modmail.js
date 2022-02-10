@@ -4,6 +4,7 @@ module.exports = {
    execute: async (client, message) => {
       // AJ Modmail Event
       if (!message.guild) return;
+      if (message.webhookId) return;
         if (message.channel.id === '902384176295182336') {
             // Ensure bot messages are ignored.
             if (message.author.bot) return;

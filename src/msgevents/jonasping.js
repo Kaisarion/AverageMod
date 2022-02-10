@@ -6,7 +6,8 @@ module.exports = {
     execute: async (client, message) => {
        // AJ Modmail Event
 
-       // Check if not an @ everyone or a bot
+       // Check if not an @ everyone or a bot, or a webook
+       if (message.webhookId) return;
        if (message.content.includes('@here') || message.content.includes('@everyone')) return;
        if (message.author.bot) return;
 
