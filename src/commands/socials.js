@@ -13,7 +13,7 @@ module.exports = {
         .setColor('#daffff')
         .setThumbnail(jonas.user.displayAvatarURL({dynamic: true}))
         .addFields(
-            { name: 'Tiktok', value: 'https://tiktok.com/@average_jonas' },
+            { name: 'Tiktok', value: 'https://tiktok.com/@average_jonas', inline: true},
             { name: 'Twitter', value: 'https://twitter.com/average_jonas', inline: true },
             { name: 'Main YouTube', value: 'https://youtube.com/averagejonas', inline: true },
             { name: 'Second YouTube', value: 'https://youtube.com/averagejonas2', inline: true },
