@@ -1,3 +1,5 @@
+const { MessageEmbed } = require("discord.js");
+
 module.exports = {
     name: 'jonasping',
     event: 'messageCreate',
@@ -22,6 +24,16 @@ module.exports = {
                message.channel.send(`${message.author} Please do not ping Jonas. (<#730584520574763008>)`)
       
       
+               const modlogs = client.channels.cache.get('737716214318628914')
+
+               const log = new MessageEmbed()
+               .setAuthor({ name: message.author.tag, iconURL: message.author.avatarURL({dynamic: true})})
+               .setDescription(`**🗑 Message sent by ${message.author} deleted in <#${message.channel.id}>**\n${message.content}`)
+               .setFooter({text: `Message ID: ${message.id}`})
+               .setColor('#F9CDC4')
+               .setTimestamp()
+
+               modlogs.send({embeds: [log]})
              } else return;
          }
 
