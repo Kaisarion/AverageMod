@@ -8,8 +8,6 @@ module.exports = {
 		.setDescription('Find out if Jonas\' is streaming or not, and his stream information.'),
 	execute: async(interaction) => {
 
-        console.log(axios.get('https://decapi.me/twitch/avatar/AverageJonas'))
-
         const avatar = axios.get('https://decapi.me/twitch/avatar/AverageJonas');
         const game = axios.get('https://decapi.me/twitch/game/AverageJonas');
         const uptime = axios.get('https://decapi.me/twitch/uptime/AverageJonas');
