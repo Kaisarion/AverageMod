@@ -9,7 +9,6 @@ module.exports = {
         const mock = interaction.options.getString('text')
 
         let tomock = mock
-        .join(' ')
         .split('')
         .map((c, i) => i % 2 ? c.toUpperCase() : c)
         .join('')
