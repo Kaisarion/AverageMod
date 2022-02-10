@@ -8,6 +8,7 @@ module.exports = {
 
         // Check if user is a moderator or not.
         if (!message.guild) return;
+        if (message.author.bot) return;
         if (message.member.roles.cache.has('252845216359383042')) {
             if(message.content.startsWith("..modreply")) {
 

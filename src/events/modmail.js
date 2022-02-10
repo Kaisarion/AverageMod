@@ -12,15 +12,13 @@ module.exports = {
 
            // Defining the success variables
            client.success = async (channel, suc, msg) => {
-              let mess = await channel.send(`✅ **${suc}**\n${msg}`);
-              mess.delete({ timeout: 10000 })
-                 .catch(console.log('Issue deleting help success message, must of already been deleted.')); // Error handling
+              let mess = await channel.send(`✅ **${suc}**\n${msg}`)
+              setTimeout(() => mess.delete(), 10000);
            };
 
            client.error = async (channel, err, msg) => {
-              let mess = await channel.send(`❌ **${err}**\n${msg}`);
-              mess.delete({ timeout: 10000 })
-                 .catch(console.log('Issue deleting help error message, must of already been deleted.')); // Error handling
+              let mess = await channel.send(`❌ **${err}**\n${msg}`)
+              setTimeout(() => mess.delete(), 10000);// Error handling
            };
 
            // Attachment handling.
@@ -31,9 +29,7 @@ module.exports = {
            });
 
            // Remove the message from the guild chat as it may contain sensitive information.
-           if (message.guild) {
-              message.delete().catch((err) => console.error(err));
-           }
+           message.delete()
            await client.success(message.channel, `${message.author}, your message has been sent!`, 'I have safely informed server staff for you! expect a response soon.')
         }
 
