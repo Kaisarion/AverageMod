@@ -21,10 +21,16 @@ module.exports = {
             const title2 = responses[3]
             const views2 = responses[4]
             let livestatus;
+            let viewcount;
+            let uptime;
             if (views2.data.toString() === 'AverageJonas is offline') {
               livestatus = 'No. Offline.'
+              viewcount = '0'
+              uptime = '0min'
             } else {
               livestatus = `Yes. Playing ${game2.data.toString()}`
+              uptime = uptime2.data.toString()
+              viewcount = views2.data.toString()
             }
             // use/access the results 
 
@@ -36,8 +42,8 @@ module.exports = {
                 { name: 'Live?', value: livestatus },
                 { name: 'Stream Title', value: title2.data.toString() },
                 { name: 'Game', value: game2.data.toString() },
-                { name: 'Views', value: views2.data.toString() },
-                { name: 'Stream Uptime', value: uptime2.data.toString() },
+                { name: 'Views', value: viewcount },
+                { name: 'Stream Uptime', value: uptime },
             )
 
             return interaction.reply({embeds: [info]});
