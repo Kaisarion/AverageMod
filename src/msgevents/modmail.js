@@ -9,7 +9,7 @@ module.exports = {
             // Ensure bot messages are ignored.
             if (message.author.bot) return;
 
-           const modMailCh = client.channels.resolve('738542068393312366');
+           const modMailCh = client.channels.resolve('717388632100569259');
 
            // Defining the success variables
            client.success = async (channel, suc, msg) => {
