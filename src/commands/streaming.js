@@ -8,8 +8,6 @@ module.exports = {
 		.setDescription('Find out if Jonas\' is streaming or not, and his stream information.'),
 	execute: async(interaction) => {
 
-        console.log(axios.get('https://decapi.me/twitch/avatar/AverageJonas'))
-
         const avatar = axios.get('https://decapi.me/twitch/avatar/AverageJonas');
         const game = axios.get('https://decapi.me/twitch/game/AverageJonas');
         const uptime = axios.get('https://decapi.me/twitch/uptime/AverageJonas');
@@ -22,6 +20,18 @@ module.exports = {
             const uptime2 = responses[2]
             const title2 = responses[3]
             const views2 = responses[4]
+            let livestatus;
+            let viewcount;
+            let uptime;
+            if (views2.data.toString() === 'AverageJonas is offline') {
+              livestatus = 'No. Offline.'
+              viewcount = '0'
+              uptime = '0min'
+            } else {
+              livestatus = `Yes. Playing ${game2.data.toString()}`
+              uptime = uptime2.data.toString()
+              viewcount = views2.data.toString()
+            }
             // use/access the results 
 
             const info = new MessageEmbed()
@@ -29,11 +39,11 @@ module.exports = {
             .setThumbnail(avatar2.data)
             .setColor('#FF10F0')
             .addFields(
-                { name: 'Live?', value: 'Some value here that I am waiting for jonas to stop streaming for to get' },
+                { name: 'Live?', value: livestatus },
                 { name: 'Stream Title', value: title2.data.toString() },
                 { name: 'Game', value: game2.data.toString() },
-                { name: 'Views', value: views2.data.toString() },
-                { name: 'Stream Uptime', value: uptime2.data.toString() },
+                { name: 'Views', value: viewcount },
+                { name: 'Stream Uptime', value: uptime },
             )
 
             return interaction.reply({embeds: [info]});
